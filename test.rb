@@ -4,6 +4,7 @@ require 'set'
 
 class TestLandmark < Test::Unit::TestCase
 
+	# basic test with set of landmarks and error variation of 1
 	def test_basic
 		landmark = Set[7, 15, 25]
 		vehicle = Vehicle.new(landmark, 1)
@@ -19,6 +20,7 @@ class TestLandmark < Test::Unit::TestCase
 		assert_equal(vehicle.instance_variable_get(:@points), res)
 	end
 
+	# test a different error variation
 	def test_diff_error_variation
 		landmark = Set[7, 15, 25]
 		vehicle = Vehicle.new(landmark, 2)
@@ -34,6 +36,7 @@ class TestLandmark < Test::Unit::TestCase
 		assert_equal(vehicle.instance_variable_get(:@points), res)
 	end
 
+	# test overlapping error variation
 	def test_diff_overlapping_error_variation
 		landmark = Set[7, 15, 25]
 		vehicle = Vehicle.new(landmark, 4)
@@ -49,6 +52,7 @@ class TestLandmark < Test::Unit::TestCase
 		assert_equal(vehicle.instance_variable_get(:@points), res)
 	end
 
+	# test edges
 	def test_edge_landmarks
 		landmark = Set[1, 30]
 		vehicle = Vehicle.new(landmark, 1)
