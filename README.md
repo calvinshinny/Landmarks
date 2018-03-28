@@ -6,7 +6,11 @@ Landmarks are at points [5, 12, 18, 25]. Imagine a sensor attached to a vehicle 
 
 If the vehicle moves from point 1 to point 30, populate an output list of size 30, where if the sensor detects that a landmark is present, it populates a 1 in the list else populates a 0. Print the output list.
 
-# Running the script
+# Unit Tests
+
+To run the small set of unit tests on the command line, execute the test file with the following command: ruby test.rb
+
+# Running Script
 
 To run the script on the command line, execute the main file with following command: ruby main.rb
 
