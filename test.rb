@@ -67,4 +67,64 @@ class TestLandmark < Test::Unit::TestCase
 
 		assert_equal(vehicle.instance_variable_get(:@points), res)
 	end
+
+	# test invalid landmarks when vehicle attempts to move
+	def test_invalid_landmarks_move
+		landmark = Set[7, 15, 25, 31]
+		vehicle = Vehicle.new(landmark, 1)
+
+		error_string = "Cannot Move: invalid set of landmarks."
+
+		assert_equal(vehicle.move, error_string)
+	end
+
+	# test invalid landmarks when vehicle attempts to print points
+	def test_invalid_landmarks_print
+		landmark = Set[7, 15, 25, 31]
+		vehicle = Vehicle.new(landmark, 1)
+
+		error_string = "Cannot Print: invalid set of landmarks."
+
+		assert_equal(vehicle.print, error_string)
+	end
+
+	# test invalid error variation when vehicle attempts to move
+	def test_invalid_error_variation_move
+		landmark = Set[7, 15, 25]
+		vehicle = Vehicle.new(landmark, -1)
+
+		error_string = "Cannot Move: invalid error variation."
+
+		assert_equal(vehicle.move, error_string)
+	end
+
+	# test invalid error variation when vehicle attempts to print points
+	def test_invalid_error_variation_print
+		landmark = Set[7, 15, 25]
+		vehicle = Vehicle.new(landmark, -1)
+
+		error_string = "Cannot Print: invalid error variation."
+
+		assert_equal(vehicle.print, error_string)
+	end
+
+	# test invalid landmarks AND error variation when vehicle attempts to move
+	def test_invalid_landmarks_error_variation_move
+		landmark = Set[7, 15, 25, 31]
+		vehicle = Vehicle.new(landmark, -1)
+
+		error_string = "Cannot Move: invalid set of landmarks and invalid error variation."
+
+		assert_equal(vehicle.move, error_string)
+	end
+
+	# test invalid landmarks AND error variation when vehicle attempts to print
+	def test_invalid_landmarks_error_variation_print
+		landmark = Set[7, 15, 25, 31]
+		vehicle = Vehicle.new(landmark, -1)
+		vehicle_string = vehicle.print
+		error_string = "Cannot Print: invalid set of landmarks and invalid error variation."
+
+		assert_equal(vehicle_string, error_string)
+	end
 end
