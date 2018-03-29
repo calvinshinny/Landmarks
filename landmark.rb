@@ -12,19 +12,10 @@ class Vehicle
 	# move vehicle along path of landmarks
 	def move
 
-		# return if landmarks is in range or error variation is negative
+		# check landmarks and error variation inputs
 		if !in_range || @error < 0
-			ret_string = ""
-				if !in_range && @error < 0
-					ret_string = "Cannot Move: invalid set of landmarks and invalid error variation."
-				elsif !in_range
-					ret_string = "Cannot Move: invalid set of landmarks."
-				else
-					ret_string = "Cannot Move: invalid error variation."
-				end
-
-			puts ret_string
-			return ret_string
+			str = check_inputs("Move")
+			return str
 		end
 
 		# traverse points array from 1 to 30
@@ -75,22 +66,29 @@ class Vehicle
 		return false
 	end
 
+	# return if landmarks is in range or error variation is negative
+	def check_inputs(type)
+		ret_string = ""
+			if !in_range && @error < 0
+				ret_string = "Cannot #{type}: invalid set of landmarks and invalid error variation."
+			elsif !in_range
+				ret_string = "Cannot #{type}: invalid set of landmarks."
+			else
+				ret_string = "Cannot #{type}: invalid error variation."
+			end
+
+		puts ret_string
+		return ret_string
+	end
+
 	# print each element
 	def print
 
-		# return if landmarks is in range or error variation is negative
+		# check landmarks and error variation inputs
+		# check landmarks and error variation inputs
 		if !in_range || @error < 0
-			ret_string = ""
-				if !in_range && @error < 0
-					ret_string = "Cannot Print: invalid set of landmarks and invalid error variation."
-				elsif !in_range
-					ret_string = "Cannot Print: invalid set of landmarks."
-				else
-					ret_string = "Cannot Print: invalid error variation."
-				end
-
-			puts ret_string
-			return ret_string
+			str = check_inputs("Print")
+			return str
 		end
 
 		# print each point
